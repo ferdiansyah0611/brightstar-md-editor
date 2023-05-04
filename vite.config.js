@@ -1,5 +1,5 @@
 export default {
-  base: "/md-editor",
+  base: "/brightstar-md-editor",
   build: {
     rollupOptions: {
       output: {
