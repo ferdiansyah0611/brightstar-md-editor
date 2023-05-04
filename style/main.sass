@@ -1,0 +1,280 @@
+:root
+	--bg-primary: #f3f3f3
+	--bg-primary-hover: #ffffff
+	--text-primary: #000000
+	--border-primary: #d9d9d9
+	--bg-toolbar: #f1f1f1
+	--color-toolbar-disable: #767676
+	--bg-selection: #00afcb
+	--font-family: system-ui
+	--bg-dropdown: #f1f1f1
+	--shadow-color: rgb(155 155 155 / 55%)
+	--bg-table: #ffffff
+
+@mixin border-primary
+	border: 1px solid var(--border-primary)
+
+.mdeditor
+	font-family: var(--font-family)
+
+.mdeditor-dark
+	--bg-primary: #242424
+	--bg-primary-hover: #565656
+	--text-primary: #ffffff
+	--border-primary: #767676
+	--bg-toolbar: #363636
+	--color-toolbar-disable: #cfcfcf
+	--bg-selection: #4c4c4c
+	--bg-dropdown: #181818
+	--shadow-color: rgb(0 0 0 / 66%)
+	--bg-table: rgb(13 17 23)
+	color-scheme: dark
+
+.mdeditor-disabled
+	textarea
+		color: var(--color-toolbar-disable) !important
+	.toolbar-container
+		color: var(--color-toolbar-disable)
+		a
+			cursor: auto !important
+			&:hover
+				background: transparent !important
+.toolbar-container
+	@include border-primary
+	color: var(--text-primary)
+	border-bottom-width: 0px
+	background: var(--bg-toolbar)
+	display: flex
+	.toolbar
+		width: calc(100% - 50px)
+		display: flex
+		overflow: auto
+	.toolbar-help
+		@include border-primary
+		position: relative
+		display: flex
+		border-top-width: 0px
+		border-bottom-width: 0px
+		border-right-width: 0px
+		.mdeditor-dropdown
+			display: none
+			position: absolute
+			z-index: 1
+		> a.active ~ .mdeditor-dropdown
+			background: var(--bg-dropdown)
+			box-shadow: -1px 2px 7px 2px var(--shadow-color)
+			display: flex
+			flex-direction: column
+			right: 10px
+			top: 43px
+			padding: 10px 0px
+			border-radius: 10px
+			z-index: 11
+			a
+				width: 100px
+				font-size: 0.8em
+				color: var(--text-primary)
+				text-decoration: none
+				display: flex
+				align-items: center
+				padding: 10px 10px
+				i
+					margin-right: 5px
+					width: 20px
+		a
+			width: 18px
+		a[title="menu"]
+			text-align: center
+			flex: 1
+	.toolbar-help
+		flex: 1
+	.toolbar, .toolbar-help
+		a
+			padding: 0.5em
+			cursor: pointer
+			&:hover
+				background: var(--bg-primary-hover)
+				transition: 0.5s all
+		a[title="redo"]
+			border-right: 1px solid var(--border-primary)
+
+.preview
+	background: var(--bg-primary)
+	color: var(--text-primary)
+	border-left: 1px solid var(--border-primary)
+	display: flex
+	flex-direction: column
+	padding: 0.5em
+	white-space: break-spaces
+	max-height: 400px
+	flex: 1
+	overflow: auto
+	position: relative
+	> div:nth-child(1)
+		position: sticky
+		z-index: 10
+		top: 0px
+	> div:nth-child(2)
+		padding-top: 40px
+		*
+			margin: 0
+		table
+			width: 100%
+			background: var(--bg-table)
+			border: 1px solid var(--border-primary)
+			border-collapse: collapse
+			table-layout: fixed
+			td, th
+				border: 1px solid var(--border-primary)
+				padding: 0.5em
+				margin: 0
+		blockquote
+			font-size: 1em
+			margin: 50px auto
+			font-style: italic
+			padding: 0.2em 30px 0.2em 65px
+			border-left: 8px solid #78C0A8 
+			line-height: 1.6
+			position: relative
+			background: var(--bg-table)
+		blockquote::before
+			font-family: Arial
+			content: "\201C"
+			color: #78C0A8
+			font-size: 4em
+			position: absolute
+			left: 10px
+			top: -10px
+		hr
+			border: 1px solid var(--border-primary)
+			border-bottom-width: 0px
+		img
+			max-width: 100%
+			height: auto
+			object-fit: cover
+	.close-preview
+		position: absolute
+		right: 10px
+		padding: 0.5em
+		cursor: pointer
+.list-result
+	background: var(--bg-primary)
+	color: var(--text-primary)
+	border: 1px solid var(--border-primary)
+	display: flex
+	flex-direction: column
+	border-bottom-width: 0px
+	max-height: 106px
+	overflow: auto
+	div
+		padding: 0.5em
+		display: flex
+		p
+			margin: 0px
+			flex: 1
+			white-space: nowrap
+			overflow: hidden
+			text-overflow: ellipsis
+			max-width: calc(100% - 100px)
+		button
+			background: var(--bg-primary)
+			color: var(--text-primary)
+			border: 1px solid var(--border-primary)
+			cursor: pointer
+			margin-left: 5px
+
+.mdeditor-search
+	display: flex
+	flex-direction: column
+	background: var(--bg-primary)
+	color: var(--text-primary)
+	@media (max-width: 512px)
+		button
+			flex: 1
+		button.find
+			border-left-width: 0px !important
+		button.close
+			border-right-width: 0px !important
+	@media (min-width: 512px)
+		flex-direction: row
+		input
+			flex: 1
+		button.find, div
+			border-left-width: 0px !important
+		button.close
+			border-right-width: 0px !important
+
+	div
+		border: 1px solid var(--border-primary)
+		border-bottom-width: 0px
+		display: flex
+		justify-content: center
+	button, input
+		background: var(--bg-primary)
+		color: var(--text-primary)
+	button
+		cursor: pointer
+	button.find, button.replace, button.close
+		padding: 0.5em
+		border: 1px solid var(--border-primary)
+		border-bottom-width: 0px
+		border-top-width: 0px
+		border-left-width: 0px
+	button.find
+		border-left-width: 1px
+	input
+		padding: 0.5em
+		outline: none
+		border: 1px solid var(--border-primary)
+		border-bottom-width: 0px
+
+.textarea-container
+	@include border-primary
+	display: flex
+	> textarea
+		color: var(--text-primary)
+		padding: 0.5em
+		background: var(--bg-primary)
+
+		width: 100%
+		min-height: 400px
+		display: none
+		outline: none
+		border: 0px
+		font-family: system-ui
+		font-size: 1em
+		resize: none
+		line-height: 1.5em
+		flex: 1
+		&.mount
+			display: block
+		&::-moz-selection
+			color: white
+			background: var(--bg-selection)
+		&::selection
+			color: white
+			background: var(--bg-selection)
+
+.mdeditor-footer
+	background: var(--bg-toolbar)
+	color: var(--text-primary)
+	border: 1px solid var(--border-primary)
+	border-top-width: 0px
+	display: flex
+	font-size: 12px
+	> div
+		flex: 1
+		padding: 0.5em
+		display: flex
+		&:nth-child(2)
+			justify-content: flex-end
+			p
+				margin-left: 10px
+		p
+			margin: 0px
+
+@media (max-width: 640px)
+	.preview-active textarea
+		display: none !important
+	.preview
+		border-left-width: 0px
