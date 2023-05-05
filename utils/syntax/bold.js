@@ -35,5 +35,6 @@ export default function bold() {
 		onMount,
 		action,
 		icon: "fa-solid fa-bold",
+		name: "bold"
 	};
 }

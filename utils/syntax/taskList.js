@@ -24,5 +24,6 @@ export default function taskList() {
 		action,
 		onMount,
 		icon: "fa-solid fa-list-check",
+		name: "task list"
 	};
 }

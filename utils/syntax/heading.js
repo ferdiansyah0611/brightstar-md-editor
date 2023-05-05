@@ -41,5 +41,6 @@ export default function heading() {
 		onMount,
 		action,
 		icon: "fa-solid fa-heading",
+		name: "heading"
 	};
 }

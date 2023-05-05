@@ -9,6 +9,7 @@ export default function image() {
 	}
 	return {
 		action,
-		icon: 'fa-solid fa-image'
+		icon: 'fa-solid fa-image',
+		name: "image"
 	};
 }

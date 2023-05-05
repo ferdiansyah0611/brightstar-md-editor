@@ -11,6 +11,7 @@ export default function blockquote() {
 	}
 	return {
 		action,
-		icon: 'fa-solid fa-quote-left'
+		icon: 'fa-solid fa-quote-left',
+		name: "blockquote"
 	};
 }

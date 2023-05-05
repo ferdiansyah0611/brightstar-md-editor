@@ -19,5 +19,6 @@ export default function strikethrough() {
 	return {
 		action,
 		icon: "fa-solid fa-strikethrough",
+		name: "strikethrough"
 	};
 }

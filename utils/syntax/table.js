@@ -13,5 +13,6 @@ export default function table() {
 	return {
 		action,
 		icon: "fa-solid fa-table",
+		name: "table"
 	};
 }

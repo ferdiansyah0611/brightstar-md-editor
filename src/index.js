@@ -123,19 +123,13 @@ class BrightstarMdEditor {
 			},
 		];
 		this.plugins = [...historyAction, ...this.plugins].map((plugin) => {
-			if (!plugin.name)
-				return {
-					name: "anonymous",
-					hidden: true,
-				};
-			let name = toLowerText(plugin.name.replace("bound ", ""));
 			if (typeof plugin === "function") {
 				plugin = plugin.bind(this)();
 			}
 			if (this.pluginsOption[name]) {
-				plugin = Object.assign(this.pluginsOption[name]);
+				plugin = Object.assign(plugin, this.pluginsOption[name]);
 			}
-			return { name, ...plugin };
+			return plugin;
 		});
 	}
 	// default parse markdown
@@ -285,9 +279,5 @@ BrightstarMdEditor.prototype.makeSearch = makeSearch;
 BrightstarMdEditor.prototype.makeTextArea = makeTextArea;
 BrightstarMdEditor.prototype.makeIcon = makeIcon;
 BrightstarMdEditor.prototype.makeFooter = makeFooter;
-
-function toLowerText(value) {
-	return value.replaceAll(/([A-Z])/g, " $1").toLowerCase();
-}
 
 export default BrightstarMdEditor;

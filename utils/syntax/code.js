@@ -35,5 +35,6 @@ export default function code() {
 		onMount,
 		action,
 		icon: "fa-solid fa-code",
+		name: "code"
 	};
 }

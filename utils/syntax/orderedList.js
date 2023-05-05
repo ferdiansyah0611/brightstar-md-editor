@@ -30,5 +30,6 @@ export default function orderedList() {
 		action,
 		onMount,
 		icon: "fa-solid fa-list-ol",
+		name: "ordered list"
 	};
 }

@@ -9,6 +9,7 @@ export default function horizontal() {
 	}
 	return {
 		action,
-		icon: 'fa-solid fa-grip-lines'
+		icon: 'fa-solid fa-grip-lines',
+		name: "horizontal"
 	};
 }

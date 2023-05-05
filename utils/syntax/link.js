@@ -9,6 +9,7 @@ export default function link() {
 	}
 	return {
 		action,
-		icon: 'fa-solid fa-link'
+		icon: 'fa-solid fa-link',
+		name: "link"
 	};
 }

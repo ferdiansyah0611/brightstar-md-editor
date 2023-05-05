@@ -24,5 +24,6 @@ export default function unorderedList() {
 		action,
 		onMount,
 		icon: "fa-solid fa-list-ul",
+		name: "unordered list"
 	};
 }
