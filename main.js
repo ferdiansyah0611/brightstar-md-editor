@@ -1,19 +1,24 @@
 import "./style/main.sass";
-import MdEditor from "./src";
+import BrightstarMdEditor from "./src";
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.time("Load MdEditor");
-  let editor = new MdEditor({
-    element: document.getElementById("app"),
-    placeholder: "Write Markdown In Here",
-    option: {
-      autoSave: {
-        id: "main_editor",
+if (import.meta.env.PROD) {
+  window.BrightstarMdEditor = BrightstarMdEditor
+}
+else {
+  document.addEventListener("DOMContentLoaded", () => {
+    console.time("Load BrightstarMdEditor");
+    let editor = new BrightstarMdEditor({
+      element: document.getElementById("app"),
+      placeholder: "Write Markdown In Here",
+      option: {
+        autoSave: {
+          id: "main_editor",
+        },
       },
-    },
+    });
+    editor.text("# hello world\n## hello world");
+    editor.setMode(true);
+    editor.mount();
+    console.timeEnd("Load BrightstarMdEditor");
   });
-  editor.text("# hello world\n## hello world");
-  editor.setMode(true);
-  editor.mount();
-  console.timeEnd("Load MdEditor");
-});
+}

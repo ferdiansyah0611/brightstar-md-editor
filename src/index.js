@@ -22,7 +22,7 @@ import image from "../utils/syntax/image";
 import strikethrough from "../utils/syntax/strikethrough";
 import table from "../utils/syntax/table";
 
-class MdEditor {
+class BrightstarMdEditor {
 	constructor({ element, placeholder, option }) {
 		this.$state = {
 			onDisable: false,
@@ -257,15 +257,15 @@ class MdEditor {
 	}
 }
 
-MdEditor.prototype.makePreview = makePreview;
-MdEditor.prototype.makeToolbar = makeToolbar;
-MdEditor.prototype.makeSearch = makeSearch;
-MdEditor.prototype.makeTextArea = makeTextArea;
-MdEditor.prototype.makeIcon = makeIcon;
-MdEditor.prototype.makeFooter = makeFooter;
+BrightstarMdEditor.prototype.makePreview = makePreview;
+BrightstarMdEditor.prototype.makeToolbar = makeToolbar;
+BrightstarMdEditor.prototype.makeSearch = makeSearch;
+BrightstarMdEditor.prototype.makeTextArea = makeTextArea;
+BrightstarMdEditor.prototype.makeIcon = makeIcon;
+BrightstarMdEditor.prototype.makeFooter = makeFooter;
 
 function toLowerText(value) {
 	return value.replaceAll(/([A-Z])/g, " $1").toLowerCase();
 }
 
-export default MdEditor;
+export default BrightstarMdEditor;

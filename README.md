@@ -4,7 +4,7 @@ This is an elegant editor for Markdown, a lightweight markup language that allow
 
 ## Usage
 
-To use the MD Editor, create a new instance of the MdEditor class and pass in an element to mount it to and a placeholder text to display in the editor:
+To use the Brightstar MD Editor, create a new instance of the MdEditor class and pass in an element to mount it to and a placeholder text to display in the editor:
 
 ```javascript
 let editor = new MdEditor({
@@ -16,7 +16,7 @@ editor.mount();
 
 ### Option
 
-The MD Editor supports the following options:
+The Brightstar MD Editor supports the following options:
 
 **autoSave**
 
@@ -30,7 +30,7 @@ let option = {
 
 ### Property
 
-The MD Editor has the following properties:
+The Brightstar MD Editor has the following properties:
 
 **text(value?)**
 
