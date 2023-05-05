@@ -2,16 +2,51 @@
 
 This is an elegant editor for Markdown, a lightweight markup language that allows you to write formatted text using plain text syntax. Markdown is often used to create documentation, readme files, and blog posts.
 
+[DEMO](https://ferdiansyah0611.github.io/brightstar-md-editor)
+
 ## Usage
 
-To use the Brightstar MD Editor, create a new instance of the MdEditor class and pass in an element to mount it to and a placeholder text to display in the editor:
+To use the Brightstar MD Editor, create a new instance of the BrightstarMdEditor class and pass in an element to mount it to and a placeholder text to display in the editor:
 
 ```javascript
-let editor = new MdEditor({
+let option = {};
+let editor = new BrightstarMdEditor({
   element: document.getElementById("app"),
   placeholder: "Write Markdown In Here",
+  option
 });
 editor.mount();
+```
+
+## Installation
+
+**Using CDN**
+
+To use the editor with the CDN, add the following code to your HTML file:
+
+```html
+<!-- Add this CSS to the head of your HTML file -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/brightstar-md-editor@latest/dist/assets/index.css" />
+
+<!-- Add this JavaScript to the end of the body of your HTML file -->
+<script src="https://cdn.jsdelivr.net/npm/brightstar-md-editor@latest/dist/assets/index.js"></script>
+```
+
+**Using NPM**
+
+To install the editor with NPM, run the following command:
+
+```bash
+npm i brightstar-md-editor
+```
+
+After installing, you can import the editor into your project like this:
+
+```javascript
+import BrightstarMdEditor from 'brightstar-md-editor';
+
+// Create a new instance of the editor
+const editor = new BrightstarMdEditor();
 ```
 
 ### Option
@@ -23,9 +58,23 @@ The Brightstar MD Editor supports the following options:
 Enables auto-save and restore functionality. Pass an object with an id property to enable auto-save using the browser's localStorage:
 
 ```javascript
-let option = {
-  autoSave: { id: "main_editor" },
-};
+option.autoSave = { id: "main_editor" };
+```
+
+**disallow**
+
+If your site already has fontawesome and highlight.js, you can disable them to prevent library collisions.
+
+```javascript
+option.disallow = { icon: true, highlight: true };
+```
+
+**parse**
+
+If you already have a markdown parse, you can use the parse without having to use the default (showdown.js).
+
+```javascript
+option.parse = (text) => myMarkdownParse(text)
 ```
 
 ### Property
@@ -125,3 +174,24 @@ function myPlugin() {
   return { action, onMount };
 }
 ```
+
+## Shortcut
+
+Brightstar MD Editor has the following shortcuts:
+
+| Key | Function |
+| ----------- | ----------- |
+| ctrl + shift + H | heading |
+| ctrl + b | bold |
+| ctrl + shift + L | code |
+| ctrl + i | italic |
+
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

@@ -5,6 +5,8 @@ if (import.meta.env.PROD) {
   window.BrightstarMdEditor = BrightstarMdEditor
 }
 else {
+  import("./style.css");
+
   document.addEventListener("DOMContentLoaded", () => {
     console.time("Load BrightstarMdEditor");
     let editor = new BrightstarMdEditor({
@@ -13,7 +15,7 @@ else {
       option: {
         autoSave: {
           id: "main_editor",
-        },
+        }
       },
     });
     editor.text("# hello world\n## hello world");

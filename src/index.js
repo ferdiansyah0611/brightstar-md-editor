@@ -24,6 +24,10 @@ import table from "../utils/syntax/table";
 
 class BrightstarMdEditor {
 	constructor({ element, placeholder, option }) {
+		if (!option.disallow) {
+			option.disallow = {};
+		}
+
 		this.$state = {
 			onDisable: false,
 			onPreview: false,
@@ -74,6 +78,7 @@ class BrightstarMdEditor {
 	_process() {
 		this._createDefaultParse();
 		this._createHighlight();
+		this._createIcon();
 		this._createTextArea();
 		this.history.setNode(this.textarea.el);
 	}
@@ -137,8 +142,9 @@ class BrightstarMdEditor {
 		}
 		return;
 	}
+	// default highlight
 	_createHighlight() {
-		if (!this.option.highlight) {
+		if (!this.option.disallow.highlight) {
 			if (this.highlight) {
 				this.highlight.link.remove();
 			} else {
@@ -152,22 +158,30 @@ class BrightstarMdEditor {
 				this.highlight = { script };
 			}
 
-			let linkURL = 'https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github.css'
+			let linkURL = "https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github.css";
 			if (this.getMode()) {
-				linkURL = 'https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github-dark.css'
+				linkURL = "https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github-dark.css";
 			}
 			const link = makeElement("link");
 			link.setAttribute("rel", "stylesheet");
-			link.setAttribute(
-				"href", linkURL
-			);
+			link.setAttribute("href", linkURL);
 			document.head.appendChild(link);
 
 			this.highlight.link = link;
 		}
 	}
+	// default icon
+	_createIcon() {
+		if (!this.option.disallow.icon) {
+			const link = makeElement("link");
+			link.setAttribute("href", "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+			link.setAttribute("rel", "stylesheet");
+			document.head.appendChild(link);
+		}
+	}
 	historyUpdateDefault() {
 		this.history.update(this.textarea.el.value);
+		if (this.$state.onPreview) this.makePreview();
 	}
 	// plugins register
 	use(instance) {
@@ -198,10 +212,10 @@ class BrightstarMdEditor {
 	setMode(isDark) {
 		if (isDark) {
 			this.element.classList.add("mdeditor-dark");
-			return this._createHighlight()
+			return this._createHighlight();
 		}
 		this.element.classList.remove("mdeditor-dark");
-		return this._createHighlight()
+		return this._createHighlight();
 	}
 	getMode() {
 		return this.element.classList.contains("mdeditor-dark");
