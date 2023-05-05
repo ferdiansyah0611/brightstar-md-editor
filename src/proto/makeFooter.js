@@ -28,7 +28,8 @@ export default function makeFooter() {
 	footer.appendChild(div1);
 	footer.appendChild(div2);
 
-	this.footer = footer
+	this.footer = footer;
+	this.footer.effect = effect;
 	this.element.appendChild(footer);
 	return footer;
 }

@@ -5,9 +5,40 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Brightstar MD Editor by ferdiansyah0611</title>
+    <style>
+      #app{
+        max-width: 800px;
+        width: 100%;
+      }
+      body{
+        padding: 10px;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.time("Load BrightstarMdEditor");
+        let editor = new BrightstarMdEditor({
+          element: document.getElementById("app"),
+          placeholder: "Write Markdown In Here",
+          option: {
+            autoSave: {
+              id: "main_editor",
+            }
+          },
+        });
+        editor.text("# hello world\n## hello world");
+        editor.setMode(true);
+        editor.mount();
+        console.timeEnd("Load BrightstarMdEditor");
+      });
+    </script>
   </body>
 </html>

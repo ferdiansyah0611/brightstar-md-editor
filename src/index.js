@@ -104,7 +104,10 @@ class BrightstarMdEditor {
 				name: "undo",
 				action: () => {
 					this.history.undo();
+
+					let value = this.textarea.el.value;
 					if (this.$state.onPreview) this.makePreview();
+					if (this.footer) this.footer.effect(value);
 				},
 			},
 			{
@@ -112,7 +115,10 @@ class BrightstarMdEditor {
 				name: "redo",
 				action: () => {
 					this.history.redo();
+
+					let value = this.textarea.el.value;
 					if (this.$state.onPreview) this.makePreview();
+					if (this.footer) this.footer.effect(value);
 				},
 			},
 		];
@@ -180,8 +186,10 @@ class BrightstarMdEditor {
 		}
 	}
 	historyUpdateDefault() {
-		this.history.update(this.textarea.el.value);
+		let value = this.textarea.el.value;
+		this.history.update(value);
 		if (this.$state.onPreview) this.makePreview();
+		if (this.footer) this.footer.effect(value);
 	}
 	// plugins register
 	use(instance) {
