@@ -186,6 +186,39 @@ Brightstar MD Editor has the following shortcuts:
 | ctrl + shift + L | code |
 | ctrl + i | italic |
 
+## Customize Theme
+
+Change the following properties to change the theme:
+
+```css
+:root {
+  --bg-primary: #f3f3f3
+  --bg-primary-hover: #ffffff
+  --text-primary: #000000
+  --border-primary: #d9d9d9
+  --bg-toolbar: #f1f1f1
+  --color-toolbar-disable: #767676
+  --bg-selection: #00afcb
+  --font-family: system-ui
+  --bg-dropdown: #f1f1f1
+  --shadow-color: rgb(155 155 155 / 55%)
+  --bg-table: #ffffff
+}
+
+.mdeditor-dark {
+  --bg-primary: #242424
+  --bg-primary-hover: #565656
+  --text-primary: #ffffff
+  --border-primary: #767676
+  --bg-toolbar: #363636
+  --color-toolbar-disable: #cfcfcf
+  --bg-selection: #4c4c4c
+  --bg-dropdown: #181818
+  --shadow-color: rgb(0 0 0 / 66%)
+  --bg-table: rgb(13 17 23)
+  color-scheme: dark
+}
+```
 
 ## Contributing
 
