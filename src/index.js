@@ -22,12 +22,34 @@ import image from "../utils/syntax/image";
 import strikethrough from "../utils/syntax/strikethrough";
 import table from "../utils/syntax/table";
 
+// Define a function to handle width preview in current instance
+const handleWidthPreview = (element) => {
+	let isActive = element.classList.contains("preview-active"),
+		textarea = element.querySelector("textarea"),
+		preview = element.querySelector(".preview");
+	if (element.offsetWidth <= 640) {
+		if (!textarea) return;
+		if (!isActive) {
+			textarea.removeAttribute("style");
+			return;
+		}
+		textarea.setAttribute("style", "display: none !important;");
+
+		if (!preview) return;
+		preview.setAttribute("style", "border-left-width: 0px;");
+	} else {
+		if (!textarea) return;
+		textarea.removeAttribute("style");
+		if (!preview) return;
+		preview.setAttribute("style", "border-left-width: 1px;");
+	}
+};
+
 class BrightstarMdEditor {
 	constructor({ element, placeholder, option }) {
 		if (!option.disallow) {
 			option.disallow = {};
 		}
-
 		this.$state = {
 			onDisable: false,
 			onPreview: false,
@@ -35,7 +57,12 @@ class BrightstarMdEditor {
 				this.$state[key] = value;
 				if (key === "onPreview") {
 					let name = "preview-active";
-					value ? this.element.classList.add(name) : this.element.classList.remove(name);
+					if (value) {
+						this.element.classList.add(name);
+					} else {
+						this.element.classList.remove(name);
+					}
+					handleWidthPreview(element);
 				}
 				if (key === "onDisable") {
 					let name = "mdeditor-disabled";
@@ -73,6 +100,11 @@ class BrightstarMdEditor {
 		];
 		this._placeholder = placeholder;
 		this._process();
+
+		const callback = () => handleWidthPreview(element);
+		
+		window.addEventListener("resize", callback);
+		this.detachAction.push(() => window.removeEventListener("resize", callback));
 	}
 	// process editor
 	_process() {
