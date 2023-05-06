@@ -131,21 +131,23 @@
 				margin: 0
 		blockquote
 			font-size: 1em
-			margin: 50px auto
+			margin: 1em auto
 			font-style: italic
 			padding: 0.2em 30px 0.2em 65px
 			border-left: 8px solid #78C0A8 
 			line-height: 1.6
 			position: relative
 			background: var(--bg-table)
-		blockquote::before
-			font-family: Arial
-			content: "\201C"
-			color: #78C0A8
-			font-size: 4em
-			position: absolute
-			left: 10px
-			top: -10px
+			p
+				overflow-wrap: break-word
+			&::before
+				font-family: Arial
+				content: "\201C"
+				color: #78C0A8
+				font-size: 4em
+				position: absolute
+				left: 10px
+				top: -10px
 		hr
 			border: 1px solid var(--border-primary)
 			border-bottom-width: 0px
