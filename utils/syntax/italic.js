@@ -35,6 +35,7 @@ export default function italic() {
 		onMount,
 		action,
 		icon: "fa-solid fa-italic",
-		name: "italic"
+		name: "italic",
+		shortcut: "ctrl+i"
 	};
 }

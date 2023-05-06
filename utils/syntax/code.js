@@ -35,6 +35,7 @@ export default function code() {
 		onMount,
 		action,
 		icon: "fa-solid fa-code",
-		name: "code"
+		name: "code",
+		shortcut: "ctrl+shift+L"
 	};
 }

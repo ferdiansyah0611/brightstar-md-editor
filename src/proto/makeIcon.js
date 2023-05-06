@@ -8,7 +8,7 @@ export default function makeIcon(plugins) {
 		return plugins.action(e)
 	}
 	icons.setAttribute("class", plugins.icon);
-	root.setAttribute("title", plugins.name);
+	root.setAttribute("title", plugins.name + (plugins.shortcut ? ` (${plugins.shortcut})`: ''));
 	root.addEventListener("click", callback);
 	root.appendChild(icons);
 	this.detachAction.push(() => root.removeEventListener("click", callback));
