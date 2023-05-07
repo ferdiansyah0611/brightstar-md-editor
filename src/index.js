@@ -26,7 +26,9 @@ import table from "../utils/syntax/table";
 const handleWidthPreview = (element) => {
 	let isActive = element.classList.contains("preview-active"),
 		textarea = element.querySelector("textarea"),
-		preview = element.querySelector(".preview");
+		preview = element.querySelector(".preview"),
+		rootTextarea = element.querySelector('.textarea-container');
+	// on mobile
 	if (element.offsetWidth <= 640) {
 		if (!textarea) return;
 		if (!isActive) {
@@ -34,12 +36,16 @@ const handleWidthPreview = (element) => {
 			return;
 		}
 		textarea.setAttribute("style", "display: none !important;");
+		rootTextarea.classList.add('full');
 
 		if (!preview) return;
 		preview.setAttribute("style", "border-left-width: 0px;");
-	} else {
+	}
+	// on desktop
+	else {
 		if (!textarea) return;
 		textarea.removeAttribute("style");
+		rootTextarea.classList.remove('full');
 		if (!preview) return;
 		preview.setAttribute("style", "border-left-width: 1px;");
 	}
@@ -225,6 +231,7 @@ class BrightstarMdEditor {
 	text(value) {
 		if (value && typeof value === "string") {
 			this.textarea.el.value = value;
+			this.historyUpdateDefault();
 			return true;
 		}
 		return this.textarea.el.value;
