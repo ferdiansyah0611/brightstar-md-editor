@@ -105,7 +105,6 @@
 	display: flex
 	flex-direction: column
 	padding: 0.5em
-	white-space: break-spaces
 	max-height: 400px
 	flex: 1
 	overflow: auto
@@ -119,6 +118,25 @@
 		padding-bottom: 40px
 		*
 			margin: 0
+		pre, li, table, img, video
+			margin: 1em 0px !important
+		h1, h2, h3, h4, h5, h6, p, a
+			overflow-wrap: break-word !important
+			margin-bottom: 0.5em !important
+		p, a, pre, li
+			font-size: 1em !important
+		h1
+			font-size: 2em !important
+		h2
+			font-size: 1.5em !important
+		h3
+			font-size: 1.125em !important
+		h4
+			font-size: 1em !important
+		h5
+			font-size: .875em !important
+		h6
+			font-size: 0.75em !important
 		table
 			width: 100%
 			background: var(--bg-table)
@@ -133,13 +151,11 @@
 			font-size: 1em
 			margin: 1em auto
 			font-style: italic
-			padding: 0.2em 30px 0.2em 65px
+			padding: 1em 30px 1em 65px
 			border-left: 8px solid #78C0A8 
 			line-height: 1.6
 			position: relative
 			background: var(--bg-table)
-			p
-				overflow-wrap: break-word
 			&::before
 				font-family: Arial
 				content: "\201C"
