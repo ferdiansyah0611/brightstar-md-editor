@@ -1,6 +1,6 @@
 # Brightstar MD Editor
 
-This is an elegant editor for Markdown, a lightweight markup language that allows you to write formatted text using plain text syntax. Markdown is often used to create documentation, readme files, and blog posts.
+Brightstar MD Editor is a powerful and user-friendly Markdown editor library that allows developers to easily integrate Markdown editing functionality into their web applications. With its intuitive interface, users can easily create, edit and format Markdown content, and preview their work in real-time.
 
 [DEMO](https://ferdiansyah0611.github.io/brightstar-md-editor)
 
